@@ -4,7 +4,8 @@ import { MdFlightTakeoff } from "react-icons/md";
 import { MdTour } from "react-icons/md";
 import { RiHotelLine } from "react-icons/ri";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { HiCurrencyBangladeshi } from "react-icons/hi2";
+import { HiCurrencyBangladeshi, HiCurrencyRupee } from "react-icons/hi2";
+import { HiMiniCurrencyRupee } from "react-icons/hi2";
 import { FaCheck } from "react-icons/fa6";
 
 import NavbarItem from "./NavbarItem";
@@ -98,7 +99,7 @@ const Navbar = () => {
                       </button>
                       <button onClick={() => selectCountry("Pakistan")}>
                         <div className="flex items-center justify-between gap-2">
-                          <HiCurrencyBangladeshi className="text-3xl" />
+                          <HiMiniCurrencyRupee className="text-3xl" />
                           <p className="">Pakistan</p>
                           <FaCheck
                             className={
@@ -122,7 +123,11 @@ const Navbar = () => {
                 <div>
                 <button onClick={() => selectCountry("Bangladesh")}>
                     <div className="flex items-center justify-between gap-2">
-                      <HiCurrencyBangladeshi className="text-3xl" />
+                     
+
+                      {
+                        selectedCurrency === "BDT" ? <HiCurrencyBangladeshi className="text-3xl" /> : <HiMiniCurrencyRupee className="text-3xl" />
+                      }
 
                       <p className="">{selectedCurrency}</p>
                      
