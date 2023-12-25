@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/logo.png";
 import { MdFlightTakeoff } from "react-icons/md";
 import { MdTour } from "react-icons/md";
@@ -13,6 +13,24 @@ import NavbarItem from "./NavbarItem";
 const Navbar = () => {
   const [selectedCountry, setSelectedCountry] = useState("Bangladesh");
   const [selectedCurrency, setSelectedCurrency] = useState("BDT");
+  const [isSticky, setSticky] = useState(false);
+
+  console.log("sticky? ", isSticky);
+
+  const scrollHandler = () => {
+    const scrollValue = window.scrollY;
+    if (scrollValue > 0) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  console.log("sticky? ", isSticky);
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+  }, [scrollHandler]);
 
   const navbarData = [
     {
@@ -41,32 +59,32 @@ const Navbar = () => {
       countryCurrency: "PKR",
     },
   ];
- 
 
   const selectCountry = (country) => {
-   const findCurrencyObject = currencyData.find(data => data.countryName === country);
+    const findCurrencyObject = currencyData.find(
+      (data) => data.countryName === country
+    );
     setSelectedCurrency(findCurrencyObject.countryCurrency);
-    
+
     setSelectedCountry(country);
   };
 
-  console.log("After Changes: ",selectedCurrency);
+  console.log("After Changes: ", selectedCurrency);
 
   return (
-    <nav>
-      <div className="border container mx-auto w-[70%] flex items-center justify-between">
-        <div className="size-24 border-2 border-green-500">
+    <nav style={{position:"sticky", top:"0", border:"2px solid blue"}}>
+      <div className="navbar container mx-auto w-[70%] flex items-center justify-between">
+        <div className="size-24">
           <img src={Logo} alt="website logo" />
         </div>
 
-       <div className="hidden lg:block">
-       <div className="flex gap-8">
-          {navbarData.map((navItem, index) => (
-            <NavbarItem key={index} navItem={navItem} />
-          ))}
+        <div className="hidden lg:block">
+          <div className="flex gap-8">
+            {navbarData.map((navItem, index) => (
+              <NavbarItem key={index} navItem={navItem} />
+            ))}
+          </div>
         </div>
-
-       </div>
         <div className="flex items-center gap-3">
           <details className="dropdown dropdown-end">
             <summary className="m-1 btn w-[150px] bg-transparent hover:bg-transparent">
@@ -120,26 +138,26 @@ const Navbar = () => {
                 <div className="flex flex-col gap-5">
                   <span className="text-blue-800 font-semibold">Currency</span>
 
-                <div>
-                <button onClick={() => selectCountry("Bangladesh")}>
-                    <div className="flex items-center justify-between gap-2">
-                     
+                  <div>
+                    <button onClick={() => selectCountry("Bangladesh")}>
+                      <div className="flex items-center justify-between gap-2">
+                        {selectedCurrency === "BDT" ? (
+                          <HiCurrencyBangladeshi className="text-3xl" />
+                        ) : (
+                          <HiMiniCurrencyRupee className="text-3xl" />
+                        )}
 
-                      {
-                        selectedCurrency === "BDT" ? <HiCurrencyBangladeshi className="text-3xl" /> : <HiMiniCurrencyRupee className="text-3xl" />
-                      }
+                        <p className="">{selectedCurrency}</p>
 
-                      <p className="">{selectedCurrency}</p>
-                     
-                      <FaCheck />
-                    </div>
-                  </button>
-                </div>
+                        <FaCheck />
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
 
               <div className="">
-              <button className="btn btn-warning flex ms-auto">Apply</button>
+                <button className="btn btn-warning flex ms-auto">Apply</button>
               </div>
             </div>
           </details>
