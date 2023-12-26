@@ -72,19 +72,28 @@ const Navbar = () => {
   console.log("After Changes: ", selectedCurrency);
 
   return (
-    <nav style={{position:"sticky", top:"0", border:"2px solid blue"}}>
+    <nav
+      className={`${
+        isSticky
+          ? "sticky top-0 bg-red-400 z-30 transition-all duration-300 shadow-lg"
+          : "bg-base-100 z-30"
+      }`}
+    >
       <div className="navbar container mx-auto w-[70%] flex items-center justify-between">
         <div className="size-24">
           <img src={Logo} alt="website logo" />
         </div>
 
-        <div className="hidden lg:block">
+        {/* navigation options */}
+        <div className={`${isSticky ? "hidden lg:block" : "hidden"}`}>
           <div className="flex gap-8">
             {navbarData.map((navItem, index) => (
               <NavbarItem key={index} navItem={navItem} />
             ))}
           </div>
         </div>
+
+        {/* dropdown menu */}
         <div className="flex items-center gap-3">
           <details className="dropdown dropdown-end">
             <summary className="m-1 btn w-[150px] bg-transparent hover:bg-transparent">
