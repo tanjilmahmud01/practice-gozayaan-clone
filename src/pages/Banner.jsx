@@ -31,11 +31,11 @@ const Banner = () => {
       </div>
 
       {/* search box */}
-      <div className="absolute top-[200px] left-[25%] w-[50%] h-[300px] bg-white">
+      <div className="absolute top-[150px] left-[15%] w-[70%] h-[300px] bg-white rounded-xl shadow-md">
 
 
-      <div className="absolute top-[-40px] left-[25%] w-[50%] h-[100px] bg-white rounded-lg shadow-lg z-20">
-          <div className="flex justify-around p-4 border-2 border-green-700">
+      <div className="absolute top-[-40px] left-[25%] w-[50%] h-[100px] bg-white rounded-xl shadow-md z-20">
+          <div className="flex justify-around p-4 ">
           {navbarData.map((navItem, index) => (
               <NavbarItem key={index} navItem={navItem} />
             ))}
