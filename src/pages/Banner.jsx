@@ -5,7 +5,6 @@ import { MdFlightTakeoff, MdTour } from "react-icons/md";
 import { RiHotelLine } from "react-icons/ri";
 
 const Banner = () => {
-
   const navbarData = [
     {
       itemName: "Flight",
@@ -26,29 +25,25 @@ const Banner = () => {
       <img className="h-[100vh] w-full" src={bannerImg} alt="Banner Image" />
 
       {/* overlay */}
-      <div className="absolute top-0 h-full w-full bg-black/50">
-
-      </div>
+      <div className="absolute top-0 h-full w-full bg-black/50"></div>
 
       {/* search box */}
       <div className="absolute top-[150px] left-[15%] w-[70%] h-[300px] bg-white rounded-xl shadow-md">
-
-
-      <div className="absolute top-[-40px] left-[25%] w-[50%] h-[100px] bg-white rounded-xl shadow-md z-20">
+        <div className="absolute top-[-40px] left-[25%] w-[50%] h-[100px] bg-white rounded-xl shadow-md z-20">
           <div className="flex justify-around p-4 ">
-          {navbarData.map((navItem, index) => (
+            {navbarData.map((navItem, index) => (
               <NavbarItem key={index} navItem={navItem} />
             ))}
           </div>
+
+          <div className="absolute top-[300px] left-[35%] w-[200px] h-[70px] p-6 bg-yellow-300 rounded-xl shadow-md z-20 flex justify-center items-center">
+            <button className="text-blue-900 text-2xl font-semibold ">
+              Search
+            </button>
+          </div>
+        </div>
       </div>
-
-      </div>
-
-     
-     </div>
-
-     
-    
+    </div>
   );
 };
 
