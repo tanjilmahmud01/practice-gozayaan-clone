@@ -75,17 +75,17 @@ const Navbar = () => {
     <nav
       className={`${
         isSticky
-          ? "sticky top-0 bg-red-400 z-30 transition-all duration-300 shadow-lg"
+          ? "sticky top-0 bg-red-400 z-30 transition-all duration-300 shadow-lg "
           : "bg-base-100 z-30"
       }`}
     >
-      <div className="navbar container mx-auto w-[70%] flex items-center justify-between">
+      <div className="navbar container mx-auto w-[70%] flex items-center justify-between border-2 border-black">
         <div className="size-24">
           <img src={Logo} alt="website logo" />
         </div>
 
         {/* navigation options */}
-        <div className={`${isSticky ? "hidden lg:block" : "hidden"}`}>
+        <div className={`${isSticky ? "hidden lg:block border-2 border-black" : "hidden"}`}>
           <div className="flex gap-8">
             {navbarData.map((navItem, index) => (
               <NavbarItem key={index} navItem={navItem} />
